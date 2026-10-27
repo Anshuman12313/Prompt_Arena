@@ -1,0 +1,28 @@
+experiment_id,timestamp,problem_id,problem_title,model,prompt,status,passed,total,score,generation_latency_seconds,evaluation_latency_seconds,total_latency_seconds,error,generated_code
+be0a064c,2026-10-27T22:38:40,binary_search,Binary Search,openai/gpt-oss-120b,"""Use prefix sums and a hashmap. Handle negative numbers. Return Python code only.""",success,5,5,100.0,1.46,11.73,13.192,,"import sys
+
+def solve():
+    data = sys.stdin.read().strip().split()
+    if not data:
+        return
+    it = iter(data)
+    N = int(next(it))
+    X = int(next(it))
+    arr = [int(next(it)) for _ in range(N)]
+
+    # Prefix sums (not needed for search but included per requirement)
+    prefix = [0] * (N + 1)
+    for i in range(N):
+        prefix[i + 1] = prefix[i] + arr[i]
+
+    # Hash map from value to its first index
+    index_map = {}
+    for i, val in enumerate(arr):
+        if val not in index_map:
+            index_map[val] = i
+
+    result = index_map.get(X, -1)
+    print(result)
+
+if __name__ == ""__main__"":
+    solve()"
