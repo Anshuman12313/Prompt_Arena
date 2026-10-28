@@ -1,8 +1,6 @@
 
 from judge0_client import execute_python
 from problems import PROBLEMS
-
-
 def normalize_output(value):
     if value is None:
         return ""

@@ -26,3 +26,31 @@ def solve():
 
 if __name__ == ""__main__"":
     solve()"
+8aa6c2a8,2026-10-28T14:15:26,binary_search,Binary Search,openai/gpt-oss-120b,Use binary search. Write a clean and efficient Python solution.,success,5,5,100.0,1.535,8.566,10.103,,"import sys
+
+def solve():
+    data = sys.stdin.read().strip().split()
+    if not data:
+        return
+    it = iter(data)
+    try:
+        n = int(next(it))
+        x = int(next(it))
+    except StopIteration:
+        return
+    arr = [int(next(it)) for _ in range(n)]
+    lo, hi = 0, n - 1
+    result = -1
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if arr[mid] == x:
+            result = mid
+            break
+        elif arr[mid] < x:
+            lo = mid + 1
+        else:
+            hi = mid - 1
+    sys.stdout.write(str(result))
+
+if __name__ == ""__main__"":
+    solve()"
